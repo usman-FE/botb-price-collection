@@ -5,12 +5,277 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./dist/main.css" />
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Roboto+Condensed:400,300,300italic,400italic,700,700italic"
+    rel="stylesheet">
+
   <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
   <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
-  <title>BOTB | Price Collection</title>
+  <title>Price Collections | BOTB</title>
 </head>
 
 <body>
+  <!-- HEADER START -->
+  <header x-data="{
+    showDropdown: false,
+  }">
+    <!-- HEADER CONTAINER -->
+    <div @mouseover="showDropdown = true" @mouseleave="showDropdown = false"
+      class="bg-white fixed top-0 left-0 h-20 w-full z-40">
+      <!-- MAIN NAVIGATION BAR -->
+      <div class="max-w-[1360px] px-6 mx-auto h-full flex relative bg-white z-30">
+        <!-- HAMBURGER CONTAINER -->
+        <div class="flex h-full lg:hidden justify-start items-center font-['Roboto'] pr-2.5">
+          <!-- HAMBURGER ICON -->
+          <div class="h-[30px] w-[30px] relative flex flex-col justify-around">
+            <span class=" bg-slate-800/70 rounded-sm w-full h-1 transition-all duration-300"></span>
+            <span class=" bg-slate-800/70 rounded-sm w-full h-1 transition-all duration-300"></span>
+            <span class=" bg-slate-800/70 rounded-sm w-full h-1 transition-all duration-300"></span>
+          </div>
+        </div>
+        <!-- ACCOUNT SHORTCUT -->
+        <div class="flex h-full lg:hidden justify-start items-center font-['Roboto'] px-2.5">
+          <a href="#" class="flex items-center justify-center text-slate-800/70">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+          </a>
+        </div>
+        <!-- DESKTOP HEADER NAVIGATION -->
+        <div class="hidden lg:flex h-full w-1/2 pr-[75px] font-['Roboto']" x-data="{
+            navigationLinks: [
+              {title: 'Competitions', url: '#'},
+              {title: 'Winners', url: '#'},
+              {title: 'About', url: '#'},
+            ]
+          }">
+          <template x-for="navLink in navigationLinks" :key="navLink.title">
+            <div class="h-full grow relative group">
+              <a :href="navLink.url"
+                class="text-[#696971] uppercase text-base w-full h-full flex items-center justify-center"
+                x-text="navLink.title"></a>
+              <span
+                class="absolute bottom-0 left-0 h-px w-full bg-[#FF8200] scale-x-0 duration-200 transition-all group-hover:scale-x-100 origin-center"></span>
+            </div>
+          </template>
+        </div>
+        <!-- LOGO -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <a href="#" class="">
+            <img src="images/botb-logo-primary.png" class="max-w-[90px] md:max-w-[110px] h-auto" alt="Botb Logo">
+          </a>
+        </div>
+        <!-- LOGIN, SIGNUP & CART CONTAINER -->
+        <div class="flex items-center justify-end h-full w-1/2 font-['Roboto'] ml-auto">
+          <!-- LOGIN & SIGNUP -->
+          <div class="hidden h-full lg:flex items-center">
+            <!-- LOGIN -->
+            <div class="relative group py-2.5">
+              <a href="#" class="uppercase text-base text-[#696971]">Log In</a>
+              <span
+                class="absolute bottom-0 left-0 h-0.5 w-full bg-[#696971] scale-x-0 duration-200 transition-all group-hover:scale-x-100 origin-center"></span>
+            </div>
+            <!-- SIGN UP -->
+            <div class="px-[30px] py-2.5">
+              <div class="relative group delay-[.2s,.1s,0s] py-1 px-4">
+                <a href="#" class="uppercase text-base text-[#696971]">Sign up</a>
+                <span
+                  class="bg-[linear-gradient(to_right,_#FF8200_0%,_#FF8200_100%),linear-gradient(to_top,_#FF8200_50%,_transparent_50%),linear-gradient(to_top,_#FF8200_50%,_transparent_50%),linear-gradient(to_right,_#FF8200_0%,_#FF8200_100%),linear-gradient(to_left,_#FF8200_0%,_#FF8200_100%)] absolute top-0 left-[calc(2px/-1)] h-full w-[calc(100%+4px)] bg-[length:100%_2px,2px_200%,2px_200%,0%_2px,0%_2px] bg-[position:50%_100%,0%_0%,100%_0%,100%_0%,0%_0%] bg-no-repeat scale-x-0 rotate-0 group-hover:bg-[length:200%_2px,2px_400%,2px_400%,55%_2px,55%_2px] group-hover:bg-[position:50%_100%,_0%_100%,100%_100%,100%_0%,0%_0%] group-hover:scale-x-100 delay-[.2s,.1s,0s] transition-[transform,background-position,background-size] group-hover:delay-[0s,.1s,.2s]">
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- CART -->
+          <div class="h-full flex items-center justify-center pl-5">
+            <div class="relative h-[34px] w-[34px] cursor-pointer hover:scale-110 transition-all duration-300">
+              <span class="absolute h-full w-full top-0 left-0 flex justify-center items-center">
+                <img src="images/cart-icon.gif" class="w-[24px] h-[24px]" alt="Cart">
+              </span>
+              <span
+                class="absolute text-white bg-[#FF8200] text-xs font-['Roboto'] -right-[7px] -top-[10px] py-0.5 px-1.5 rounded-full">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- DROPDOWN MENU -->
+      <div x-show="showDropdown" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 -translate-y-1/2" x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-1/2"
+        class="absolute top-full left-0 w-full border-t border-[#C7C7C7] bg-white z-10">
+        <div class="h-full w-full flex flex-col" x-show="showDropdown"
+          x-transition:enter="transition ease-out duration-200 delay-[250ms]" x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+          <!-- DROPDOWN NAVIGATIONS -->
+          <div class="max-w-[1360px] w-full p-6 mx-auto flex">
+            <!-- NAV LEFT -->
+            <div class="w-1/2 xl:w-[47%] grid grid-cols-3 gap-x-1.5">
+              <!-- 1st COL -->
+              <div class="flex flex-col">
+                <!-- BTN 1 -->
+                <div
+                  class="bg-[#FF8200] hover:bg-[#FF6A00] duration-200 transition-all mb-1.5 rounded-xl cursor-pointer"
+                  x-data="{changeText: false}">
+                  <a @mouseover="changeText = true" @mouseleave="changeText = false" href="#"
+                    class="text-base py-3 pt-5 px-0.5 flex flex-col items-center text-center">
+                    <span
+                      class="text-[#FF8200] bg-white uppercase text-[10px] px-2 font-bold rounded leading-none py-1">Ends
+                      Sunday</span>
+                    <span
+                      class="text-white w-full uppercase lg:text-[12px] xl:text-[15px] px-2 font-extrabold leading-snug relative mt-0.5">
+                      <span class="transition-all duration-200" :class="{'opacity-0 invisible' : changeText}">
+                        Dream Car + £50,000
+                      </span>
+                      <span
+                        class="absolute w-full top-0 left-0 transition-all duration-200 flex items-center justify-center gap-x-3"
+                        :class="{'opacity-0 invisible' : !changeText}">
+                        Enter Now
+                        <span class="-rotate-90 flex items-center justify-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                            class="w-5 h-5 animate-bounce">
+                            <path fill-rule="evenodd"
+                              d="M14.77 4.21a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 011.08-1.04L10 8.168l3.71-3.938a.75.75 0 011.06-.02zm0 6a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 111.08-1.04L10 14.168l3.71-3.938a.75.75 0 011.06-.02z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+                <!-- BTN 2 -->
+                <div class="bg-[#6279B8] hover:bg-[#465A96] duration-200 transition-all mb-1 rounded-xl cursor-pointer"
+                  x-data="{changeText: false}">
+                  <a @mouseover="changeText = true" @mouseleave="changeText = false" href="#"
+                    class="text-base py-2.5 px-0.5 flex flex-col items-center text-center">
+                    <span
+                      class="text-[#6279B8] bg-white uppercase text-[10px] px-2 font-bold rounded leading-none py-1">Ends
+                      Wednesday</span>
+                    <span class="text-white uppercase text-[12px] px-2 font-extrabold leading-snug relative mt-0.5">
+                      <span class="transition-all duration-200" :class="{'opacity-0 invisible' : changeText}">
+                        Mixdweek Lifestyle
+                      </span>
+                      <span
+                        class="absolute w-full top-0 left-0 transition-all duration-200 flex items-center justify-center gap-x-3"
+                        :class="{'opacity-0 invisible' : !changeText}">
+                        Enter Now
+                        <span class="-rotate-90 flex items-center justify-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                            class="w-5 h-5 animate-bounce">
+                            <path fill-rule="evenodd"
+                              d="M14.77 4.21a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 011.08-1.04L10 8.168l3.71-3.938a.75.75 0 011.06-.02zm0 6a.75.75 0 01.02 1.06l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 111.08-1.04L10 14.168l3.71-3.938a.75.75 0 011.06-.02z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <!-- 2nd COL -->
+              <div class="" x-data="{
+                  winners: [
+                    {title: 'Previous Winners', url: '#'},
+                    {title: 'In the Press', url: '#'},
+                    {title: 'Prize Collections', url: '#'},
+                    {title: 'Winners Map', url: '#'}
+                  ]
+                }">
+                <ul class="text-center font-['Roboto'] flex flex-col gap-y-3">
+                  <template x-for="winner in winners" :key="winner.title">
+                    <li class="leading-none">
+                      <a :href="winner.url" class="pb-[3px] group relative text-sm leading-none text-[#696971]">
+                        <span x-text="winner.title"></span>
+                        <span
+                          class="absolute bottom-0 left-0 h-px w-full bg-[#696971] scale-x-0 duration-200 transition-all group-hover:scale-x-100 origin-center"></span>
+                      </a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <!-- 3rd COL -->
+              <div class="" x-data="{
+                                winners: [
+                                  {title: 'Customer Reviews', url: '#'},
+                                  {title: 'History & Locations', url: '#'},
+                                  {title: 'How To Play & FAQs', url: '#'},
+                                  {title: 'Under the Hood', url: '#'},
+                                  {title: 'Contact Us', url: '#'},
+                                ]
+                              }">
+                <ul class="text-center font-['Roboto'] flex flex-col gap-y-3">
+                  <template x-for="winner in winners" :key="winner.title">
+                    <li class="leading-none">
+                      <a :href="winner.url" class="pb-[3px] group relative text-sm leading-none text-[#696971]">
+                        <span x-text="winner.title"></span>
+                        <span
+                          class="absolute bottom-0 left-0 h-px w-full bg-[#696971] scale-x-0 duration-200 transition-all group-hover:scale-x-100 origin-center"></span>
+                      </a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+            <!-- NAV RIGHT -->
+            <div class="w-1/2 xl:w-[47%] ml-auto flex items-center justify-end">
+              <a href="#">
+                <img src="images/lambo-nav-banner-smaller.jpg" alt="Lambo CTA" class="max-w-[383px] h-auto">
+              </a>
+            </div>
+          </div>
+          <!-- DROPDOWN FOOTER -->
+          <div class="border-t border-[#CCCCCC] bg-[#F0F0F0] w-full flex justify-center items-center py-3 gap-x-6">
+            <div class="h-[23px] w-[23px]">
+              <a href="#" class="w-full h-full brightness-100 hover:brightness-75 transition-all">
+                <img src="images/fb-logo.png" alt="Facebook" class="max-w-full h-auto">
+              </a>
+            </div>
+            <div class="h-[23px] w-[23px]">
+              <a href="#" class="w-full h-full brightness-100 hover:brightness-75 transition-all">
+                <img src="images/ig-logo.png" alt="Instagram" class="max-w-full h-auto">
+              </a>
+            </div>
+            <div class="h-[23px] w-[23px]">
+              <a href="#" class="w-full h-full brightness-100 hover:brightness-75 transition-all">
+                <img src="images/yt-logo.png" alt="Youtube" class="max-w-full h-auto">
+              </a>
+            </div>
+            <div class="h-[23px] w-[23px]">
+              <a href="#" class="w-full h-full brightness-100 hover:brightness-75 transition-all">
+                <img src="images/tt-logo.png" alt="Tiktok" class="max-w-full h-auto">
+              </a>
+            </div>
+            <div class="h-[23px] w-[75px]">
+              <a href="#" class="w-full h-full brightness-100 hover:brightness-75 transition-all">
+                <img src="images/ff-logo.png" alt="Feefo" class="max-w-full h-auto">
+              </a>
+            </div>
+            <div class="h-[23px] w-[90px]">
+              <a href="#" class="w-full h-full brightness-100 hover:brightness-75 transition-all">
+                <img src="images/tp-logo.png" alt="Trustpilot" class="max-w-full h-auto">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- HEADER BG -->
+    <div class="relative h-[81px] border-b bg-black border-[#CCCCCC]"></div>
+  </header>
+  <!-- HEADER END -->
+
+
+  <!-- MOCKS -->
+  <div class="h-screen bg-purple-300 w-full"></div>
+  <div class="h-screen w-full"></div>
+  <div class="h-screen w-full"></div>
+  <div class="h-screen w-full"></div>
 
 </body>
 
