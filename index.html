@@ -69,7 +69,7 @@
           x-transition:enter-start="opacity-0 -translate-x-full" x-transition:enter-end="opacity-100 translate-x-0"
           x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-x-0"
           x-transition:leave-end="opacity-0 -translate-x-full"
-          class="fixed bg-white z-40 m-auto w-full h-full left-0 top-0 px-5 sm:hidden font-['Roboto'] overflow-y-auto pb-14">
+          class="fixed bg-white z-40 m-auto w-full h-full left-0 top-0 px-5 sm:hidden font-['Roboto'] overflow-y-auto overflow-x-hidden pb-14">
           <!-- DROPDOWN HEADER SMALL -->
           <div class="flex items-center justify-around w-full h-[150px] relative">
             <!-- LOGIN -->
@@ -486,10 +486,73 @@
       </div>
     </div>
     <!-- HEADER BG -->
-    <div class="relative h-[81px] border-b bg-black border-[#CCCCCC]"></div>
+    <div class="relative h-[81px] border-b border-[#CCCCCC]"></div>
   </header>
   <!-- HEADER END -->
-
+  <!-- PRIZE COLLECTION SECTION START -->
+  <section>
+    <!-- TEXT CONTENT -->
+    <div class="pt-7 max-w-[1360px] px-6 mx-auto">
+      <h1 class="uppercase text-[#FF8200] text-center text-3xl md:text-4xl font-semibold mb-5">PRIZE COLLECTIONS</h1>
+      <p class="max-w-6xl mx-auto text-center mb-5">There’s nothing quite like being surprised with the news you’ve won
+        your dream car…unless you’re in the showroom a
+        couple of months later collecting your new pride and joy! And now of course there’s also winners being presented
+        with
+        their new motorbikes, luxury watches and much more!</p>
+    </div>
+    <!-- YEARS PAGINATION -->
+    <div
+      class="max-w-[1360px] px-6 mx-auto flex items-center justify-start md:justify-center border-t border-[#C7C7C7] bg-[#F1F1F1] overflow-x-auto"
+      x-data="{
+        years: [
+          {title: 'all', url: '#', selected: true},
+          {title: '2022', url: '#', selected: false},
+          {title: '2021', url: '#', selected: false},
+          {title: '2020', url: '#', selected: false},
+          {title: '2019', url: '#', selected: false},
+          {title: '2018', url: '#', selected: false},
+          {title: '2017', url: '#', selected: false},
+          {title: '2016', url: '#', selected: false},
+          {title: '2015', url: '#', selected: false},
+          {title: '2014', url: '#', selected: false},
+          {title: '2013', url: '#', selected: false},
+          {title: '2012', url: '#', selected: false},
+          {title: '2011', url: '#', selected: false},
+          {title: '2010', url: '#', selected: false},
+        ]
+      }">
+      <template x-for="year in years" :key="year.title">
+        <a href="#"
+          class="capitalize shrink-0 mx-2 inline-block w-10 my-5 text-center text-sm hover:text-[#FF8200] transition-all hover:underline"
+          x-text="year.title" :class="year.selected ? 'text-[#FF8200] font-bold' : 'text-[#696A71]'"></a>
+      </template>
+      <!-- SEARCH BAR LARGE -->
+      <div class="relative hidden lg:flex max-w-xs ml-3 h-11">
+        <input type="search" class="px-8 w-full h-full text-[#b9b9b9] text-[15px] border border-[#C7C7C7] outline-none"
+          placeholder="Search">
+        <span class="absolute top-1/2 -translate-y-1/2 left-2 text-[#b9b9b9]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+            <path fill-rule="evenodd"
+              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+              clip-rule="evenodd" />
+          </svg>
+        </span>
+      </div>
+    </div>
+    <!-- SEARCH BAR SMALL -->
+    <div class="relative lg:hidden flex max-w-full mx-6 h-11 my-3">
+      <input type="search" class="px-8 w-full h-full text-[#b9b9b9] text-[15px] border border-[#C7C7C7] outline-none"
+        placeholder="Search">
+      <span class="absolute top-1/2 -translate-y-1/2 left-2 text-[#b9b9b9]">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+          <path fill-rule="evenodd"
+            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+            clip-rule="evenodd" />
+        </svg>
+      </span>
+    </div>
+  </section>
+  <!-- PRIZE COLLECTION SECTION END -->
   <!-- MOCKS -->
   <div class="h-screen bg-purple-300 w-full"></div>
   <div class="h-screen w-full"></div>
