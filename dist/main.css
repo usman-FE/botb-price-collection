@@ -787,14 +787,6 @@ video {
   margin-bottom: 0.625rem;
 }
 
-.mt-2\.5 {
-  margin-top: 0.625rem;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
 .block {
   display: block;
 }
@@ -883,8 +875,28 @@ video {
   height: 2.75rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .max-h-0 {
   max-height: 0px;
+}
+
+.max-h-\[40rem\] {
+  max-height: 40rem;
+}
+
+.min-h-\[40rem\] {
+  min-height: 40rem;
+}
+
+.min-h-\[38rem\] {
+  min-height: 38rem;
+}
+
+.min-h-\[25rem\] {
+  min-height: 25rem;
 }
 
 .w-full {
@@ -1070,15 +1082,15 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.scale-100 {
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
+.scale-50 {
+  --tw-scale-x: .5;
+  --tw-scale-y: .5;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.scale-90 {
-  --tw-scale-x: .9;
-  --tw-scale-y: .9;
+.scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1706,10 +1718,6 @@ video {
   opacity: 1;
 }
 
-.opacity-50 {
-  opacity: 0.5;
-}
-
 .opacity-20 {
   opacity: 0.2;
 }
@@ -1756,6 +1764,10 @@ video {
   transition-delay: 250ms;
 }
 
+.delay-700 {
+  transition-delay: 700ms;
+}
+
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -1778,6 +1790,10 @@ video {
 
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.ease-\[cubic-bezier\(\.47\2c 1\.18\2c \.46\2c 1\.26\)\] {
+  transition-timing-function: cubic-bezier(.47,1.18,.46,1.26);
 }
 
 .hover\:scale-110:hover {
@@ -1882,6 +1898,10 @@ video {
     display: none;
   }
 
+  .md\:min-h-\[30rem\] {
+    min-height: 30rem;
+  }
+
   .md\:max-w-\[110px\] {
     max-width: 110px;
   }
@@ -1953,6 +1973,10 @@ video {
     display: none;
   }
 
+  .lg\:min-h-\[34rem\] {
+    min-height: 34rem;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
   }
@@ -1971,6 +1995,10 @@ video {
 }
 
 @media (min-width: 1280px) {
+  .xl\:min-h-\[38rem\] {
+    min-height: 38rem;
+  }
+
   .xl\:w-\[47\%\] {
     width: 47%;
   }
